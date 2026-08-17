@@ -146,4 +146,4 @@ Per verify block the draft supplies `base_logits[L,V]` and hiddens. We build a *
 ## 8. Known scope notes
 
 - Greedy (T=0) only in this package; sampling-mode tree verification not included.
-- SGLang port: acceptance gain reproduced (+1.7); full-graph speed parity in progress (draft-side tree is already CUDA-graph captured there).
+- SGLang port: **surpassed the official full-strength sglang Domino on both speed and acceptance** — gsm8k 531.2 tok/s / accept 10.59 vs official 526.83 / 9.564; math500 538.3 / 10.23 vs 532.22 / 9.451 (128 questions, conc=1, same machine). Stack: 34-node level-fused tree builder + one-CTA accept kernel + sync-free verify plan, all CUDA-graph native.

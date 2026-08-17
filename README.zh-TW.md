@@ -146,4 +146,4 @@ EOF
 ## 8. 範圍說明
 
 - 本包僅含貪心(T=0);取樣模式的樹驗證不在其中。
-- SGLang 移植:接受長度增益已復現(+1.7);全圖速度對齊進行中(草稿側樹構建在該線已 CUDA Graph 捕獲)。
+- SGLang 移植:**速度與接受長度已全面超越官方滿血 sglang Domino**——gsm8k 531.2 tok/s / 接受 10.59 vs 官方 526.83 / 9.564;math500 538.3 / 10.23 vs 532.22 / 9.451(128 題、conc=1、同機)。技術棧:34-node level-fused 構樹 + 單 CTA 接受 kernel + 零同步 verify plan,全程 CUDA Graph 原生。
